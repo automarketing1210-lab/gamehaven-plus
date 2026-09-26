@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defaultGames } from "../shared/games";
+import { categories, defaultGames, normalizeCategory } from "../shared/games";
 
 describe("default HTML5 game catalog", () => {
   it("keeps the original four game slugs and covers at the top", () => {
@@ -16,5 +16,25 @@ describe("default HTML5 game catalog", () => {
     expect(new Set(defaultGames.map(game => game.slug)).size).toBe(defaultGames.length);
     expect(new Set(defaultGames.map(game => game.imageUrl)).size).toBe(defaultGames.length);
     expect(defaultGames.every(game => game.titles.ru.trim() && game.titles.en.trim() && game.titles.zh.trim())).toBe(true);
+  });
+
+  it("exposes the complete requested genre list in the requested order", () => {
+    expect(categories).toEqual([
+      "action", "adventure", "arcade", "board", "card", "clicker", "driving", "io",
+      "puzzle", "shooting", "simulation", "sports", "strategy", "trivia", "word",
+    ]);
+  });
+
+  it("assigns every existing game to one of the visible genres", () => {
+    expect(defaultGames.every(game => categories.includes(game.category))).toBe(true);
+  });
+
+  it("normalizes legacy database genres without dropping saved games", () => {
+    expect(normalizeCategory("racing")).toBe("driving");
+    expect(normalizeCategory("shooters")).toBe("shooting");
+    expect(normalizeCategory("puzzles")).toBe("puzzle");
+    expect(normalizeCategory("casual", "block-bloom")).toBe("arcade");
+    expect(normalizeCategory("casual", "pixel-frontier")).toBe("simulation");
+    expect(normalizeCategory("unrecognized")).toBe("arcade");
   });
 });

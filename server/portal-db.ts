@@ -1,6 +1,6 @@
 import { and, asc, eq } from "drizzle-orm";
 import { sql } from "drizzle-orm";
-import { defaultGames } from "../shared/games";
+import { defaultGames, normalizeCategory } from "../shared/games";
 import { emptyAdBannerSettings, type AdSlot } from "../shared/ads";
 import { portalAdBanners, portalFavorites, portalGames } from "../drizzle/schema";
 import { getDb } from "./db";
@@ -19,7 +19,7 @@ export async function listPortalGames(): Promise<PortalGame[]> {
   return rows.map(row => ({
     slug: row.slug,
     titles: row.titles,
-    category: row.category as PortalGame["category"],
+    category: normalizeCategory(row.category, row.slug),
     tags: row.tags,
     descriptions: row.descriptions,
     controls: row.controls,
