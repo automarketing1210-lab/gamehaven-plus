@@ -1,17 +1,9 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, double, uniqueIndex, index } from "drizzle-orm/mysql-core";
+import type { LocalizedList, LocalizedText, PortalGame } from "../shared/games";
 
-/**
- * Core user table backing auth flow.
- * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
- */
+/** Manus OAuth user table. Kept for the built-in auth integration. */
 export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
@@ -25,4 +17,29 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+export const portalGames = mysqlTable("portal_games", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 64 }).notNull(),
+  titles: json("titles").$type<LocalizedText>().notNull(),
+  category: varchar("category", { length: 32 }).notNull(),
+  tags: json("tags").$type<string[]>().notNull(),
+  descriptions: json("descriptions").$type<LocalizedText>().notNull(),
+  controls: json("controls").$type<LocalizedList>().notNull(),
+  imageUrl: text("imageUrl").notNull(),
+  gameUrl: text("gameUrl"),
+  rating: double("rating").notNull(),
+  plays: int("plays").notNull(),
+  year: int("year").notNull(),
+  badge: varchar("badge", { length: 16 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, table => ({ slugUnique: uniqueIndex("portal_games_slug_uq").on(table.slug) }));
+
+export type PortalGameRow = typeof portalGames.$inferSelect;
+
+export const portalFavorites = mysqlTable("portal_favorites", {
+  id: int("id").autoincrement().primaryKey(),
+  username: varchar("username", { length: 32 }).notNull(),
+  gameSlug: varchar("gameSlug", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => ({ userGameUnique: uniqueIndex("portal_favorite_user_game_uq").on(table.username, table.gameSlug), userIndex: index("portal_favorite_user_idx").on(table.username) }));
