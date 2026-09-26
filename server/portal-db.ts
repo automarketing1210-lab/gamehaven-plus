@@ -1,7 +1,8 @@
 import { and, asc, eq } from "drizzle-orm";
 import { sql } from "drizzle-orm";
 import { defaultGames } from "../shared/games";
-import { portalFavorites, portalGames } from "../drizzle/schema";
+import { emptyAdBannerSettings, type AdSlot } from "../shared/ads";
+import { portalAdBanners, portalFavorites, portalGames } from "../drizzle/schema";
 import { getDb } from "./db";
 import type { PortalGame } from "../shared/games";
 
@@ -54,4 +55,20 @@ export async function setPortalFavorite(username: string, gameSlug: string, favo
     await db.delete(portalFavorites).where(condition);
   }
   return getPortalFavorites(username);
+}
+
+export async function getPortalAdBanners() {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable");
+  const rows = await db.select().from(portalAdBanners);
+  const settings = structuredClone(emptyAdBannerSettings);
+  for (const row of rows) settings[row.slot as AdSlot] = { imageUrl: row.imageUrl, targetUrl: row.targetUrl };
+  return settings;
+}
+
+export async function updatePortalAdBanner(slot: AdSlot, imageUrl: string, targetUrl: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable");
+  await db.insert(portalAdBanners).values({ slot, imageUrl, targetUrl }).onDuplicateKeyUpdate({ set: { imageUrl, targetUrl } });
+  return getPortalAdBanners();
 }

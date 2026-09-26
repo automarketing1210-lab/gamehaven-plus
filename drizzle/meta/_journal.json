@@ -15,6 +15,13 @@
       "when": 1790424948573,
       "tag": "0001_cultured_mister_fear",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1790428708021,
+      "tag": "0002_loud_betty_brant",
+      "breakpoints": true
     }
   ]
 }

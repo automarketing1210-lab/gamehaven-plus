@@ -16,7 +16,7 @@ async function createContext(username: "admin" | "igrok", role: "admin" | "playe
 describe("portal role authorization", () => {
   it("rejects a player attempting to edit the games catalog", async () => {
     const ctx = await createContext("igrok", "player");
-    const call = appRouter.createCaller(ctx).portal.updateGame({ slug: "neon-drift", titles: { ru: "A", en: "A", zh: "A" }, gameUrl: "", imageData: undefined });
+    const call = appRouter.createCaller(ctx).portal.updateGame({ slug: "neon-drift", titles: { ru: "A", en: "A", zh: "A" }, gameUrl: "", imageUrl: "https://cdn.example/cover.webp", imageData: undefined });
     await expect(call).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
 
@@ -30,5 +30,17 @@ describe("portal role authorization", () => {
     const ctx = await createContext("admin", "admin");
     const call = appRouter.createCaller(ctx).portal.setFavorite({ slug: "neon-drift", favorite: true });
     await expect(call).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+
+  it("rejects a player from changing public ad banners", async () => {
+    const ctx = await createContext("igrok", "player");
+    const call = appRouter.createCaller(ctx).portal.updateAdBanner({ slot: "leaderboard", imageUrl: "https://cdn.example/ad.webp", targetUrl: "https://advertiser.example" });
+    await expect(call).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+
+  it("rejects a non-web URL for banner artwork", async () => {
+    const ctx = await createContext("admin", "admin");
+    const call = appRouter.createCaller(ctx).portal.updateAdBanner({ slot: "leaderboard", imageUrl: "javascript:alert(1)", targetUrl: "https://advertiser.example" });
+    await expect(call).rejects.toMatchObject({ code: "BAD_REQUEST" });
   });
 });

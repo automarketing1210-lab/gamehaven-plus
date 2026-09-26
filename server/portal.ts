@@ -2,10 +2,11 @@ import { TRPCError } from "@trpc/server";
 import { SignJWT, jwtVerify } from "jose";
 import { parse } from "cookie";
 import { z } from "zod";
+import { adSlots } from "../shared/ads";
 import { publicProcedure, router } from "./_core/trpc";
 import { ENV } from "./_core/env";
 import { matchPortalAccount, type PortalAccount } from "./portal-auth";
-import { getPortalFavorites, listPortalGames, setPortalFavorite, updatePortalGame } from "./portal-db";
+import { getPortalAdBanners, getPortalFavorites, listPortalGames, setPortalFavorite, updatePortalGame, updatePortalAdBanner } from "./portal-db";
 import { storagePut } from "./storage";
 
 const SESSION_COOKIE = "gamehaven_session";
@@ -55,6 +56,11 @@ async function makeSession(account: PortalAccount) {
 const localizedTitle = z.object({ ru: z.string().trim().min(1).max(100), en: z.string().trim().min(1).max(100), zh: z.string().trim().min(1).max(100) });
 const imageDataUrl = z.string().max(7_500_000).regex(/^data:image\/(?:jpeg|png|webp);base64,[a-zA-Z0-9+/=]+$/).optional();
 const safeHttpsUrl = z.string().trim().max(2048).refine(value => value === "" || /^https?:\/\//i.test(value), "Only HTTP(S) links are allowed");
+const safeImageUrl = z.string().trim().max(2048).refine(value => value === "" || /^https:\/\//i.test(value) || /^\/manus-storage\/[a-zA-Z0-9._/-]+$/.test(value), "Use HTTPS or a /manus-storage image path");
+const safeAdUrl = z.string().trim().max(2048).refine(value => {
+  if (!value) return true;
+  try { return new URL(value).protocol === "https:"; } catch { return false; }
+}, "Use a secure HTTPS link");
 
 export const portalRouter = router({
   me: publicProcedure.query(async ({ ctx }) => sessionFromRequest(ctx)),
@@ -70,6 +76,15 @@ export const portalRouter = router({
     return { success: true };
   }),
   games: publicProcedure.query(async () => listPortalGames()),
+  adBanners: publicProcedure.query(async () => getPortalAdBanners()),
+  updateAdBanner: adminProcedure.input(z.object({
+    slot: z.enum(adSlots),
+    imageUrl: safeImageUrl,
+    targetUrl: safeAdUrl,
+  })).mutation(async ({ input }) => {
+    await updatePortalAdBanner(input.slot, input.imageUrl.trim(), input.targetUrl.trim());
+    return { success: true };
+  }),
   myFavorites: playerProcedure.query(({ ctx }) => getPortalFavorites(ctx.portalUser.username)),
   setFavorite: playerProcedure.input(z.object({ slug: z.string().min(1).max(64), favorite: z.boolean() })).mutation(async ({ ctx, input }) => {
     const games = await listPortalGames();
@@ -80,7 +95,7 @@ export const portalRouter = router({
     slug: z.string().min(1).max(64),
     titles: localizedTitle,
     gameUrl: safeHttpsUrl,
-    imageUrl: safeHttpsUrl.optional(),
+    imageUrl: safeImageUrl.optional(),
     imageData: imageDataUrl,
   })).mutation(async ({ input }) => {
     let imageUrl = input.imageUrl?.trim() || undefined;
@@ -97,6 +112,6 @@ export const portalRouter = router({
     const current = games.find(game => game.slug === input.slug);
     if (!current) throw new TRPCError({ code: "NOT_FOUND", message: "Game not found." });
     await updatePortalGame(input.slug, { titles: input.titles, gameUrl: input.gameUrl.trim() || null, imageUrl: imageUrl || current.imageUrl });
-    return { success: true };
+    return { success: true, imageUrl: imageUrl || current.imageUrl };
   }),
 });

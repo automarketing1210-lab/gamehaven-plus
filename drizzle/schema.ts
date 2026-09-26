@@ -1,5 +1,6 @@
 import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, double, uniqueIndex, index } from "drizzle-orm/mysql-core";
 import type { LocalizedList, LocalizedText, PortalGame } from "../shared/games";
+import type { AdSlot } from "../shared/ads";
 
 /** Manus OAuth user table. Kept for the built-in auth integration. */
 export const users = mysqlTable("users", {
@@ -43,3 +44,10 @@ export const portalFavorites = mysqlTable("portal_favorites", {
   gameSlug: varchar("gameSlug", { length: 64 }).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, table => ({ userGameUnique: uniqueIndex("portal_favorite_user_game_uq").on(table.username, table.gameSlug), userIndex: index("portal_favorite_user_idx").on(table.username) }));
+
+export const portalAdBanners = mysqlTable("portal_ad_banners", {
+  slot: varchar("slot", { length: 20 }).$type<AdSlot>().primaryKey(),
+  imageUrl: text("imageUrl").notNull(),
+  targetUrl: text("targetUrl").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
