@@ -44,14 +44,14 @@ export async function getPortalFavorites(username: string): Promise<string[]> {
   return rows.map(row => row.gameSlug);
 }
 
-export async function togglePortalFavorite(username: string, gameSlug: string): Promise<string[]> {
+export async function setPortalFavorite(username: string, gameSlug: string, favorite: boolean): Promise<string[]> {
   const db = await getDb();
   if (!db) throw new Error("Database is unavailable");
-  const existing = await db.select({ id: portalFavorites.id }).from(portalFavorites).where(and(eq(portalFavorites.username, username), eq(portalFavorites.gameSlug, gameSlug))).limit(1);
-  if (existing.length) {
-    await db.delete(portalFavorites).where(and(eq(portalFavorites.username, username), eq(portalFavorites.gameSlug, gameSlug)));
+  const condition = and(eq(portalFavorites.username, username), eq(portalFavorites.gameSlug, gameSlug));
+  if (favorite) {
+    await db.insert(portalFavorites).values({ username, gameSlug }).onDuplicateKeyUpdate({ set: { gameSlug: sql`gameSlug` } });
   } else {
-    await db.insert(portalFavorites).values({ username, gameSlug });
+    await db.delete(portalFavorites).where(condition);
   }
   return getPortalFavorites(username);
 }

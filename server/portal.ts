@@ -5,7 +5,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
 import { ENV } from "./_core/env";
 import { matchPortalAccount, type PortalAccount } from "./portal-auth";
-import { getPortalFavorites, listPortalGames, togglePortalFavorite, updatePortalGame } from "./portal-db";
+import { getPortalFavorites, listPortalGames, setPortalFavorite, updatePortalGame } from "./portal-db";
 import { storagePut } from "./storage";
 
 const SESSION_COOKIE = "gamehaven_session";
@@ -71,10 +71,10 @@ export const portalRouter = router({
   }),
   games: publicProcedure.query(async () => listPortalGames()),
   myFavorites: playerProcedure.query(({ ctx }) => getPortalFavorites(ctx.portalUser.username)),
-  toggleFavorite: playerProcedure.input(z.object({ slug: z.string().min(1).max(64) })).mutation(async ({ ctx, input }) => {
+  setFavorite: playerProcedure.input(z.object({ slug: z.string().min(1).max(64), favorite: z.boolean() })).mutation(async ({ ctx, input }) => {
     const games = await listPortalGames();
     if (!games.some(game => game.slug === input.slug)) throw new TRPCError({ code: "NOT_FOUND", message: "Game not found." });
-    return togglePortalFavorite(ctx.portalUser.username, input.slug);
+    return setPortalFavorite(ctx.portalUser.username, input.slug, input.favorite);
   }),
   updateGame: adminProcedure.input(z.object({
     slug: z.string().min(1).max(64),

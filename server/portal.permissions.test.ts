@@ -25,4 +25,10 @@ describe("portal role authorization", () => {
     const call = appRouter.createCaller(ctx).portal.myFavorites();
     await expect(call).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
+
+  it("rejects an administrator from liking or unliking games", async () => {
+    const ctx = await createContext("admin", "admin");
+    const call = appRouter.createCaller(ctx).portal.setFavorite({ slug: "neon-drift", favorite: true });
+    await expect(call).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
 });
