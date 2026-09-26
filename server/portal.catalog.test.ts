@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { categories, defaultGames, normalizeCategory } from "../shared/games";
+import { categories, defaultGames, matchesPortalQuickView, normalizeCategory } from "../shared/games";
 
 describe("default HTML5 game catalog", () => {
   it("keeps the original four game slugs and covers at the top", () => {
@@ -27,6 +27,19 @@ describe("default HTML5 game catalog", () => {
 
   it("assigns every existing game to one of the visible genres", () => {
     expect(defaultGames.every(game => categories.includes(game.category))).toBe(true);
+  });
+
+  it("filters quick sections by new, hot, updated and multiplayer metadata", () => {
+    const hot = new Set(["neon-drift"]);
+    const now = Date.UTC(2026, 8, 26);
+    const edited = { ...defaultGames[0]!, createdAt: new Date(now - 86_400_000), updatedAt: new Date(now - 3_600_000) };
+    const seeded = { ...defaultGames[0]!, createdAt: new Date(now - 3_600_000), updatedAt: new Date(now - 3_600_000) };
+    expect(defaultGames.filter(game => matchesPortalQuickView(game, "new", hot)).map(game => game.slug)).toEqual(["skyline-raider", "block-bloom", "portal-paws"]);
+    expect(matchesPortalQuickView(defaultGames[0]!, "hot", hot)).toBe(true);
+    expect(matchesPortalQuickView(edited, "updated", hot, now)).toBe(true);
+    expect(matchesPortalQuickView(seeded, "updated", hot, now)).toBe(false);
+    expect(matchesPortalQuickView(defaultGames[3]!, "multiplayer", hot)).toBe(true);
+    expect(matchesPortalQuickView(defaultGames[0]!, "multiplayer", hot)).toBe(false);
   });
 
   it("normalizes legacy database genres without dropping saved games", () => {

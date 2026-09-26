@@ -17,7 +17,26 @@ export type PortalGame = {
   plays: number;
   year: number;
   badge: "hit" | "new" | "top" | null;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
+
+export type PortalView = "all" | "history" | "favorites" | "new" | "hot" | "updated" | "originals" | "multiplayer" | "leaderboards";
+
+export function matchesPortalQuickView(game: PortalGame, view: PortalView, hotSlugs: ReadonlySet<string>, now = Date.now()): boolean {
+  switch (view) {
+    case "new": return game.badge === "new";
+    case "hot": return hotSlugs.has(game.slug);
+    case "updated": return game.createdAt instanceof Date && game.updatedAt instanceof Date && game.updatedAt.getTime() - game.createdAt.getTime() >= 60_000 && now - game.updatedAt.getTime() <= 30 * 24 * 60 * 60 * 1000;
+    case "multiplayer": return game.category === "io" || game.tags.some(tag => /online|онлайн|мультиплеер|多人/i.test(tag));
+    case "all":
+    case "history":
+    case "favorites":
+    case "originals":
+    case "leaderboards":
+      return true;
+  }
+}
 
 export const categories: CategoryKey[] = ["action", "adventure", "arcade", "board", "card", "clicker", "driving", "io", "puzzle", "shooting", "simulation", "sports", "strategy", "trivia", "word"];
 

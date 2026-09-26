@@ -29,6 +29,8 @@ export async function listPortalGames(): Promise<PortalGame[]> {
     plays: row.plays,
     year: row.year,
     badge: row.badge as PortalGame["badge"],
+    createdAt: row.createdAt,
+    updatedAt: row.updatedAt,
   }));
 }
 
