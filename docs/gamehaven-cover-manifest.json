@@ -1,0 +1,332 @@
+{
+  "archive": "gamehaven-covers.zip",
+  "total": 54,
+  "matched": 32,
+  "unmatched": 22,
+  "covers": [
+    {
+      "file": "astral-forge.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/msYwuzrPASXNiEtc.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "block-bloom-new.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/hpicfcSgnXUtWBLh.jpg",
+      "slug": "block-bloom",
+      "status": "matched"
+    },
+    {
+      "file": "chrono-leap.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/sKDzgObZiFQPFbKE.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "circuit-sprint.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/cYfrLzmdgDQhjBTR.jpg",
+      "slug": "circuit-sprint",
+      "status": "matched"
+    },
+    {
+      "file": "clockwork-tern.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/XbcqCBvckcZdQyzW.jpg",
+      "slug": "adventure-clockwork-tern",
+      "status": "matched"
+    },
+    {
+      "file": "copper-tide.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/EUaULYwArXPTyjGU.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "coral-dominion.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/FHbZWDGybenYeXHK.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "crystal-hollow.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/LOiHaTpbyJAzKcbK.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "cyber-ronin.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/fYrCdMyMwZjPQfwU.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "drifting-lantern.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/bAPyMQmImSwACBGO.jpg",
+      "slug": "action-drift-lantern",
+      "status": "matched"
+    },
+    {
+      "file": "dune-phantom.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/jhPTwxLarGMzxICn.jpg",
+      "slug": "driving-dunewake",
+      "status": "matched"
+    },
+    {
+      "file": "echo-lantern.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/EAzzMAvySAYYOyay.jpg",
+      "slug": "adventure-echo-lantern",
+      "status": "matched"
+    },
+    {
+      "file": "ember-garden.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/wWKRWwQVFfVnpqTN.jpg",
+      "slug": "adventure-ember-orchard",
+      "status": "matched"
+    },
+    {
+      "file": "ember-vault.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/wVmumvtQIbWZToOH.jpg",
+      "slug": "action-ember-vault",
+      "status": "matched"
+    },
+    {
+      "file": "floral-contour.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/NjtEcaXRSKcQcjsr.jpg",
+      "slug": "action-bloom-circuit",
+      "status": "matched"
+    },
+    {
+      "file": "frostwind-kite.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/CijhdzTCIVFGkygF.jpg",
+      "slug": "adventure-frostwind-kite",
+      "status": "matched"
+    },
+    {
+      "file": "glitch-runner.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/HEmhTHcgWLdBOUyz.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "goal-rush.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/dCKBMBaSXjZQjmhJ.jpg",
+      "slug": "goal-rush",
+      "status": "matched"
+    },
+    {
+      "file": "gravity-vault.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/xQTypvZVIRJQDCYz.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "hover-arena.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/dnSvgAOnrttIOdOF.jpg",
+      "slug": "hover-arena",
+      "status": "matched"
+    },
+    {
+      "file": "iron-garden.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/QuRTVJXTrSuvvPyD.jpg",
+      "slug": "action-iron-orchard",
+      "status": "matched"
+    },
+    {
+      "file": "lava-warden.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/yEqTBvxABwLAyTGB.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "lunar-nomad.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/YyZGYbDBsliRgvgD.jpg",
+      "slug": "adventure-moonrail-nomad",
+      "status": "matched"
+    },
+    {
+      "file": "moonpetal-farm.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/SFpQUaLppNAzlpXH.jpg",
+      "slug": "clicker-moonseed-rancher",
+      "status": "matched"
+    },
+    {
+      "file": "mossblade.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/YqVxnVWlpgCpeQyy.jpg",
+      "slug": "action-mossblade",
+      "status": "matched"
+    },
+    {
+      "file": "neon-blade-zero.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/NPnDyIPzxkfaSPHt.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "neon-drift.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/cGGhsJQQMVdyuiyl.jpg",
+      "slug": "neon-drift",
+      "status": "matched"
+    },
+    {
+      "file": "neon-riptide.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/EClxCRTmbxWfFFqG.jpg",
+      "slug": "action-neon-riptide",
+      "status": "matched"
+    },
+    {
+      "file": "neon-sprout.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/bORJFoaCFAKMyaeM.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "nightfall-hunter.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/cxQppDSqlYFaZjpx.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "nova-breaker.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/eHiOalpAcXeZVXAP.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "pixel-frontier.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/TNgisdvpYjQQVVzB.jpg",
+      "slug": "pixel-frontier",
+      "status": "matched"
+    },
+    {
+      "file": "portal-paws.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/qsugWcQEUwTHLViU.jpg",
+      "slug": "portal-paws",
+      "status": "matched"
+    },
+    {
+      "file": "prism-shift.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/WlPuEpQuVdzYIuAy.jpg",
+      "slug": "prism-shift",
+      "status": "matched"
+    },
+    {
+      "file": "prismatic-siege.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/iIAcOtslXxwVdwHS.jpg",
+      "slug": "action-prism-siege",
+      "status": "matched"
+    },
+    {
+      "file": "root-awakening.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/WzHneyowOSvMESsw.jpg",
+      "slug": "adventure-rootwake",
+      "status": "matched"
+    },
+    {
+      "file": "scrap-titan.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/bIVPrHirOBQGTWVm.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "shadow-velocity.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/xzRTYzkPLEufEKhc.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "sky-mirage.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/AQSHtBwnhmeZCmmx.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "skyhook.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/GrHdYHfBZewJcxpi.jpg",
+      "slug": "action-skyhook",
+      "status": "matched"
+    },
+    {
+      "file": "skyline-raider.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/jEVAMuCkArrZepdL.jpg",
+      "slug": "skyline-raider",
+      "status": "matched"
+    },
+    {
+      "file": "solar-spiral.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/cJbciiKOIlYHYPWg.jpg",
+      "slug": "action-suncoil",
+      "status": "matched"
+    },
+    {
+      "file": "spectral-tide.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/iJSWrvcDpXMiOBao.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "star-loom.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/XJohVLGcrnBFaIkp.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "storm-piercer.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/SbhCbdfzWKDCZfne.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "strike-point-new.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/SpKyXRaueHDiHcaj.jpg",
+      "slug": "strike-point",
+      "status": "matched"
+    },
+    {
+      "file": "tideforge.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/VnKctZEqwCXcuxSt.jpg",
+      "slug": "action-tideforge",
+      "status": "matched"
+    },
+    {
+      "file": "tideglass-cartographer.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/cvDgApJwGgFTivNf.jpg",
+      "slug": "adventure-tideglass-cartographer",
+      "status": "matched"
+    },
+    {
+      "file": "turbo-league-new.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/LVPPEOZKNzCVvCKx.jpg",
+      "slug": "turbo-league",
+      "status": "matched"
+    },
+    {
+      "file": "turbo-wake.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/czEAZqlbYoNrQdas.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "veil-runner.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/mhImMJvLFUTRXXiX.jpg",
+      "slug": "action-veil-runner",
+      "status": "matched"
+    },
+    {
+      "file": "vortex-strike.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/pHNpkDconzBWGpLM.jpg",
+      "slug": null,
+      "status": "unmatched"
+    },
+    {
+      "file": "whisper-falls.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/dvbjrdsGOjasYLOg.jpg",
+      "slug": "board-whispering-wells",
+      "status": "matched"
+    },
+    {
+      "file": "zero-zone-new.jpg",
+      "cdnUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663488419794/hlQQjHJekTncGluQ.jpg",
+      "slug": null,
+      "status": "unmatched"
+    }
+  ]
+}
